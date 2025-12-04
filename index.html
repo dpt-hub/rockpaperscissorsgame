@@ -3,59 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <script>
-        const getComputerChoice = () => {
-            let choice = Math.floor(Math.random() * 3) + 1
-            if (choice === 1) {
-                return "rock"
-            } else if  (choice === 2) {
-                return "paper"
-            } else {
-                return "scissors"
-            }
-        }
+    <h1>Choose your move:</h1>
 
-        const getHumanChoice = () =>{
-            return (prompt("Beep Boop. What do you want to play human? Beep."))
-        }
-        
+    <div id="container">
+        <button class="playerSelection">Rock</button>
+        <button class="playerSelection">Paper</button>
+        <button class="playerSelection">Scissors</button>
+    </div>
+    
+    <div id="results"></div>
+    <div id="scores">
+        <p id="humanScore"></p>
+        <p id="computerScore"></p>
+    </div>
 
-        let humanScore = 0
-        let computerScore = 0
-
-        const playRound = (computerChoice, humanChoice) => {
-            humanChoice = humanChoice.toLowerCase()
-            if (computerChoice === humanChoice) {
-                return `It's a draw. Both chose ${humanChoice[0] + humanChoice.slice(1).toLowerCase()}.`
-            } else if ((humanChoice === "rock" && computerChoice === "scissors") || (humanChoice === "paper" && computerChoice === "rock") || (humanChoice === "scissors" && computerChoice === "paper")) {
-                humanScore++
-                return `Human wins! ${humanChoice[0].toUpperCase() + humanChoice.slice(1).toLowerCase()} beats ${computerChoice[0].toUpperCase() + computerChoice.slice(1).toLowerCase()}!` 
-            } else {
-                computerScore++
-                return `Computer wins! ${computerChoice[0].toUpperCase() + computerChoice.slice(1).toLowerCase()} beats ${humanChoice[0].toUpperCase() + humanChoice.slice(1).toLowerCase()}!`
-            }
-        }
-
-        const playGame = () => {
-            for (let i = 0; i < 5; i++) {
-                console.log(playRound(getComputerChoice(), getHumanChoice()))
-                console.log (`Human's score: ${humanScore}`)
-                console.log (`Computer's score: ${computerScore}`)
-            } 
-            if (humanScore > computerScore) {
-                return console.log(`Congratulations Human! You've beaten me!`)
-            } else if (humanScore < computerScore) {
-                return console.log(`Nice try Human. I have beat you!`)
-            } else {
-                return console.log(`Oh well, it's a draw. Let's go for it again, Human.`)
-            }
-        }
-
-        playGame()
-        
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
